@@ -1,0 +1,789 @@
+{
+	"info": {
+		"_postman_id": "5145cf96-5e02-4ef0-a9af-74af2f6edb25",
+		"name": "SpringCloudMSA 인프런강의",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "actuator",
+					"item": [
+						{
+							"name": "health",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{api-gateway}}/user-service/actuator/health",
+									"host": [
+										"{{api-gateway}}"
+									],
+									"path": [
+										"user-service",
+										"actuator",
+										"health"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "beans",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{api-gateway}}/user-service/actuator/beans",
+									"host": [
+										"{{api-gateway}}"
+									],
+									"path": [
+										"user-service",
+										"actuator",
+										"beans"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "refresh",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{api-gateway}}/user-service/actuator/refresh",
+									"host": [
+										"{{api-gateway}}"
+									],
+									"path": [
+										"user-service",
+										"actuator",
+										"refresh"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "metrics",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{api-gateway}}/user-service/actuator/metrics",
+									"host": [
+										"{{api-gateway}}"
+									],
+									"path": [
+										"user-service",
+										"actuator",
+										"metrics"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "prometheus",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{api-gateway}}/user-service/actuator/prometheus",
+									"host": [
+										"{{api-gateway}}"
+									],
+									"path": [
+										"user-service",
+										"actuator",
+										"prometheus"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "회원가입",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"huyaye@gmail.com\",\n    \"name\": \"Jung\",\n    \"pwd\": \"test1234!\"\n}"
+						},
+						"url": {
+							"raw": "{{api-gateway}}/user-service/users",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"user-service",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "로그인",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"huyaye@gmail.com\",\n    \"pwd\": \"test1234!\"\n}"
+						},
+						"url": {
+							"raw": "{{api-gateway}}/user-service/login",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"user-service",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "전체회원조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/user-service/users",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"user-service",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "개별회원조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/user-service/users/:id",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"user-service",
+								"users",
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "79efe254-f593-42d3-9afd-59978467b139"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Catalog",
+			"item": [
+				{
+					"name": "health_check",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/catalog-service/health_check",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"catalog-service",
+								"health_check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "전체 카탈로그 조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/catalog-service/catalogs",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"catalog-service",
+								"catalogs"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "health_check",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/order-service/health_check",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"order-service",
+								"health_check"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "회원 주문 조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{api-gateway}}/order-service/:userId/orders",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"order-service",
+								":userId",
+								"orders"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "a945818f-13ee-4737-9aec-e733c38f1891"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "상픔 주문",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productId\": \"CATALOG-0001\",\n    \"qty\": 20,\n    \"unitPrice\" : 100\n}"
+						},
+						"url": {
+							"raw": "{{api-gateway}}/order-service/:userId/orders",
+							"host": [
+								"{{api-gateway}}"
+							],
+							"path": [
+								"order-service",
+								":userId",
+								"orders"
+							],
+							"variable": [
+								{
+									"key": "userId",
+									"value": "caa57b49-43c5-40a2-95f9-c918a1da2b15"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Config",
+			"item": [
+				{
+					"name": "ecommerce/default",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8888/ecommerce/default",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"ecommerce",
+								"default"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ecommerce/dev",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8888/ecommerce/dev",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"ecommerce",
+								"dev"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ecommerce/prod",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8888/ecommerce/prod",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"ecommerce",
+								"prod"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "busrefresh",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8888/actuator/busrefresh",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8888",
+							"path": [
+								"actuator",
+								"busrefresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kafka",
+			"item": [
+				{
+					"name": "등록된 Connector 목록 조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "MySQL Source Connector 등록 (샘플)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"mysql-source-connect\",\n  \"config\": {\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSourceConnector\",\n    \"connection.url\": \"jdbc:mysql://ec2-52-79-104-212.ap-northeast-2.compute.amazonaws.com:3307/spring_cloud_msa\",\n    \"connection.user\": \"root\",\n    \"connection.password\": \"admin\",\n    \"mode\": \"incrementing\",\n    \"incrementing.column.name\": \"id\",\n    \"table.whitelist\": \"kafka_sample\",\n    \"topic.prefix\": \"my_topic_\",\n    \"tasks.max\": \"1\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors"
+							]
+						},
+						"description": "이 API가 호출되면\nKafka broker 에 my_topic_kafka_sample 이라는 Topic 이 생성된다.\nkafaka_sample 이라는 테이블에 데이터가 변경이 되면 my_topic_kafka_sample Topic 에 publish 된다.\nmy_topic_kafka_sample 을 consume 하면 json 형식의 테이블 데이터를 수신할 수 있다."
+					},
+					"response": []
+				},
+				{
+					"name": "MySQL Sink Connector 등록 (샘플)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"mysql-sink-connect\",\n  \"config\": {\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\n    \"connection.url\": \"jdbc:mysql://ec2-52-79-104-212.ap-northeast-2.compute.amazonaws.com:3307/spring_cloud_msa\",\n    \"connection.user\": \"root\",\n    \"connection.password\": \"admin\",\n    \"auto.create\":\"true\",\n    \"auto.evolve\":\"true\",\n    \"delete.enabled\":\"false\",\n    \"tasks.max\":\"1\",\n    \"topics\":\"my_topic_kafka_sample\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors"
+							]
+						},
+						"description": "Topic \"my_topic_kafka_sample\" 의 수신데이터를 \"my_topic_kafka_sample\" 테이블에 반영한다.\n\n먼저 \"MySQL Source Connector 등록(샘플)\" 을 실행했으면 kafka_sample 테이블에 변경을 발생시, my_topic_kafka_sample 테이블에 동일하게 반영된다.\n\n\nkafka_sample 테이블 -> SourceConnector -> my_topic_kafka_sample -> SinkConnector -> my_topic_kafka_sample 테이블"
+					},
+					"response": []
+				},
+				{
+					"name": "MySQL Sink Connector 등록 (Order)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"order-sink-connect\",\n  \"config\": {\n    \"connector.class\": \"io.confluent.connect.jdbc.JdbcSinkConnector\",\n    \"connection.url\": \"jdbc:mysql://13.125.225.214:3307/spring_cloud_msa\",\n    \"connection.user\": \"root\",\n    \"connection.password\": \"admin\",\n    \"auto.create\":\"true\",\n    \"auto.evolve\":\"true\",\n    \"delete.enabled\":\"false\",\n    \"tasks.max\":\"1\",\n    \"topics\":\"orders\"\n  }\n}"
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors"
+							]
+						},
+						"description": "Topic \"my_topic_kafka_sample\" 의 수신데이터를 \"my_topic_kafka_sample\" 테이블에 반영한다.\n\n먼저 \"MySQL Source Connector 등록(샘플)\" 을 실행했으면 kafka_sample 테이블에 변경을 발생시, my_topic_kafka_sample 테이블에 동일하게 반영된다.\n\n\nkafka_sample 테이블 -> SourceConnector -> my_topic_kafka_sample -> SinkConnector -> my_topic_kafka_sample 테이블"
+					},
+					"response": []
+				},
+				{
+					"name": "단일 Connector 상태 조회",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors/:connector-name/status",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors",
+								":connector-name",
+								"status"
+							],
+							"variable": [
+								{
+									"key": "connector-name",
+									"value": "mysql-sample-connect"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Connector 삭제",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{kafka-connector}}/connectors/:connector-name",
+							"host": [
+								"{{kafka-connector}}"
+							],
+							"path": [
+								"connectors",
+								":connector-name"
+							],
+							"variable": [
+								{
+									"key": "connector-name",
+									"value": "mysql-sample-connect"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

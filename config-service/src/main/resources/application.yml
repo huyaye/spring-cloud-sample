@@ -1,0 +1,29 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: config-service
+  rabbitmq:
+    host: 13.125.225.214
+    port: 5672
+    username: guest
+    password: guest123
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///Users/jungwook/study/msa/github/config-git-repo
+#          uri: https://github.com/huyaye/config-git-repo
+#          username: [username]
+#          password: [password]
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, busrefresh
